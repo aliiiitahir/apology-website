@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>I'm Sorry</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(to bottom, #ff4e50, #f9d423);
+            color: #333;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        .container {
+            text-align: center;
+            animation: fadeIn 3s ease-in-out;
+            position: relative;
+            background: rgba(255, 255, 255, 0.8);
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        h1 {
+            font-size: 3rem;
+            margin: 0;
+            color: #d72638;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        p {
+            font-size: 1.5rem;
+            margin: 20px 0;
+            color: #5c2a9d;
+        }
+
+        .tears {
+            font-size: 4rem;
+            animation: drop 1.5s infinite;
+        }
+
+        button {
+            font-size: 1.2rem;
+            padding: 10px 20px;
+            margin: 10px;
+            border: none;
+            border-radius: 5px;
+            background-color: #ff758c;
+            color: white;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #ff8c94;
+        }
+
+        .no-button {
+            position: absolute;
+            background-color: #ccc;
+            color: #666;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes drop {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(10px);
+            }
+        }
+
+        @keyframes hearts {
+            0% {
+                transform: scale(0.8) translateY(0);
+                opacity: 0.8;
+            }
+            50% {
+                transform: scale(1.2) translateY(-20px);
+                opacity: 1;
+            }
+            100% {
+                transform: scale(0.8) translateY(0);
+                opacity: 0.8;
+            }
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        .message {
+            margin-top: 20px;
+            font-size: 1.8rem;
+            animation: fadeIn 2s;
+            color: #2e8b57;
+        }
+
+        .heart-effect {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 3rem;
+            color: #ff6b81;
+            opacity: 0;
+            animation: hearts 1s infinite;
+        }
+
+        .heart-effect:nth-child(1) {
+            animation-delay: 0s;
+        }
+
+        .heart-effect:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+
+        .heart-effect:nth-child(3) {
+            animation-delay: 0.4s;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>I’m Sorry</h1>
+        <p>I'm sorry meri pyari begum. Please forgive me. I know I was rude.</p>
+        <div class="tears">😢</div>
+        <button onclick="revealMessage()">I Forgive You</button>
+        <button id="noButton" class="no-button" onmouseover="floatButton()">No</button>
+        <p id="message" class="message hidden">Thank you mujhe maaf karne k liyeee, meri jaan. I lovee you smmmmm ❤️</p>
+    </div>
+
+    <div id="heartContainer" class="hidden">
+        <div class="heart-effect">❤️</div>
+        <div class="heart-effect">💖</div>
+        <div class="heart-effect">💕</div>
+    </div>
+
+    <script>
+        function revealMessage() {
+            document.getElementById('message').classList.remove('hidden');
+            showHearts();
+        }
+
+        function floatButton() {
+            const button = document.getElementById('noButton');
+            const x = Math.random() * (window.innerWidth - 100);
+            const y = Math.random() * (window.innerHeight - 50);
+            button.style.position = 'absolute';
+            button.style.left = `${x}px`;
+            button.style.top = `${y}px`;
+        }
+
+        function showHearts() {
+            const heartContainer = document.getElementById('heartContainer');
+            heartContainer.classList.remove('hidden');
+            setTimeout(() => {
+                heartContainer.classList.add('hidden');
+            }, 3000); // Hearts disappear after 3 seconds
+        }
+    </script>
+</body>
+</html>
